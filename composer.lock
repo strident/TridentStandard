@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "d06bd425300ebf72df1c0832da48d9c4",
+    "packages": [
+        {
+            "name": "strident/phimple",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Strident/Phimple.git",
+                "reference": "66884280d38a1eb185e0ca8217269cd7094f1141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Strident/Phimple/zipball/66884280d38a1eb185e0ca8217269cd7094f1141",
+                "reference": "66884280d38a1eb185e0ca8217269cd7094f1141",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elliot Wright",
+                    "email": "elliot@elliotwright.co"
+                }
+            ],
+            "description": "Simple dependency injection container, inspired by Pimple.",
+            "homepage": "http://strident.io",
+            "keywords": [
+                "dic"
+            ],
+            "time": "2014-05-08 16:02:28"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "strident/phimple": 20
+    },
+    "platform": {
+        "php": ">=5.5.9"
+    },
+    "platform-dev": [
+
+    ]
+}
