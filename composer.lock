@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d06bd425300ebf72df1c0832da48d9c4",
+    "hash": "74029944c517e790ddcca54ff59df248",
     "packages": [
         {
             "name": "strident/phimple",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Strident/Phimple.git",
-                "reference": "7f5e55fac6f030ef601331ab9a328dd35c8dd68b"
+                "reference": "cbed5204a65224b1bab58567f435fb536e16ebab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Strident/Phimple/zipball/7f5e55fac6f030ef601331ab9a328dd35c8dd68b",
-                "reference": "7f5e55fac6f030ef601331ab9a328dd35c8dd68b",
+                "url": "https://api.github.com/repos/Strident/Phimple/zipball/cbed5204a65224b1bab58567f435fb536e16ebab",
+                "reference": "cbed5204a65224b1bab58567f435fb536e16ebab",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
             "keywords": [
                 "dic"
             ],
-            "time": "2014-05-08 16:17:18"
+            "time": "2014-05-08 17:55:21"
         }
     ],
     "packages-dev": [
@@ -53,9 +53,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "strident/phimple": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.5.9"
     },
