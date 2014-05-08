@@ -11,18 +11,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Strident/Phimple.git",
-                "reference": "66884280d38a1eb185e0ca8217269cd7094f1141"
+                "reference": "7f5e55fac6f030ef601331ab9a328dd35c8dd68b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Strident/Phimple/zipball/66884280d38a1eb185e0ca8217269cd7094f1141",
-                "reference": "66884280d38a1eb185e0ca8217269cd7094f1141",
+                "url": "https://api.github.com/repos/Strident/Phimple/zipball/7f5e55fac6f030ef601331ab9a328dd35c8dd68b",
+                "reference": "7f5e55fac6f030ef601331ab9a328dd35c8dd68b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9"
             },
             "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Phimple\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -38,7 +43,7 @@
             "keywords": [
                 "dic"
             ],
-            "time": "2014-05-08 16:02:28"
+            "time": "2014-05-08 16:17:18"
         }
     ],
     "packages-dev": [
