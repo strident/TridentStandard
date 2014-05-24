@@ -8,7 +8,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "strident/phimple": "1.0.*"
+        "strident/phimple": "2.0.*"
     },
     "minimum-stability": "dev"
 }
