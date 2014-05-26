@@ -28,7 +28,8 @@ class TridentKernel extends HttpKernel
     public function registerModules($environment)
     {
         $modules = [
-            new Trident\Module\FrameworkModule\TridentFrameworkModule()
+            new Trident\Module\FrameworkModule\TridentFrameworkModule(),
+            new SeerUK\Module\TestModule\SeerUKTestModule()
         ];
 
         if (in_array($environment, array('dev'))) {
