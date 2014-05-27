@@ -12,8 +12,10 @@ class TestController extends Controller
     public function testAction()
     {
         $resolver  = new TemplateNameResolver($this->container->get('kernel'));
-        $reference = $resolver->resolve('::index.html.twig');
+        $name = 'SeerUKTestModule:Test:index.html.twig';
+        $reference = $resolver->resolve($name);
 
+        var_dump($name);
         var_dump($reference->getPath());
 
         return new Response();

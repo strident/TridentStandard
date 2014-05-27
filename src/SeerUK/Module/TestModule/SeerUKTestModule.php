@@ -11,9 +11,9 @@
 
 namespace SeerUK\Module\TestModule;
 
-use Trident\Component\HttpKernel\Module\AbstractModule;
 use Phimple\Container;
 use Symfony\Component\Routing\RouteCollection;
+use Trident\Component\HttpKernel\Module\AbstractModule;
 
 /**
  * SeerUK Test Module
