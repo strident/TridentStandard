@@ -14,8 +14,7 @@
         "illuminate/events": "4.2.*@dev",
         "illuminate/support": "4.2.*@dev",
         "strident/phimple": "2.0.*",
-        "strident/trident": "dev-master",
-        "symfony/routing": "2.4.*"
+        "strident/trident": "dev-master"
     },
     "minimum-stability": "dev"
 }

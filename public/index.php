@@ -15,4 +15,4 @@ $request = new Request();
 $response = $kernel->handle($request);
 $response->send();
 
-// echo '<br /><br />' . (xdebug_time_index() * 1000) . 'ms';
+echo '<br /><br />' . (xdebug_time_index() * 1000) . 'ms';
