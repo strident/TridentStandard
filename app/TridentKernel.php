@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Trident\Component\HttpKernel\HttpKernel;
+use Trident\Component\HttpKernel\AbstractKernel;
 
 /**
  * Application Kernel
@@ -17,19 +17,16 @@ use Trident\Component\HttpKernel\HttpKernel;
  * Loads all of the application's modules, allows things like module service
  * configuration to happen.
  */
-class TridentKernel extends HttpKernel
+class TridentKernel extends AbstractKernel
 {
     /**
-     * Register modules
-     *
-     * @param  string $environment
-     * @return array
+     * {@inheritDoc}
      */
     public function registerModules($environment)
     {
         $modules = [
             new Trident\Module\FrameworkModule\TridentFrameworkModule(),
-            // new Trident\Module\TemplatingModule\TridentTemplatingModule(),
+            new Trident\Module\TemplatingModule\TridentTemplatingModule(),
             new SeerUK\Module\TestModule\SeerUKTestModule()
         ];
 
@@ -38,5 +35,13 @@ class TridentKernel extends HttpKernel
         }
 
         return $modules;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function registerConfiguration($environment)
+    {
+        return require_once __DIR__.'/config/config.php';
     }
 }

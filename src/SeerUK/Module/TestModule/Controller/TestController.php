@@ -2,22 +2,22 @@
 
 namespace SeerUK\Module\TestModule\Controller;
 
-use Phalcon\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Trident\Module\FrameworkModule\Controller\Controller;
-
-use Trident\Component\Templating\TemplateNameResolver;
 
 class TestController extends Controller
 {
     public function testAction()
     {
-        $resolver  = new TemplateNameResolver($this->container->get('kernel'));
-        $name = 'SeerUKTestModule:Test:index.html.twig';
-        $reference = $resolver->resolve($name);
+        $resolver  = $this->get('templating_name_resolver');
+        $reference = $resolver->resolve('SeerUKTestModule:Test:index.html.twig');
 
-        var_dump($name);
-        var_dump($reference->getPath());
+        var_dump($this->get('configuration')->count());
+        var_dump($this->get('configuration')->get('test', 'Testing'));
+        var_dump($this->get('configuration')->get('database.default.host'));
+        var_dump($this->get('configuration')->get('database.secondary.host'));
+        var_dump($this->get('configuration')->get('twig.cache_dir'));
 
-        return new Response();
+        return new Response($reference->getPath());
     }
 }
