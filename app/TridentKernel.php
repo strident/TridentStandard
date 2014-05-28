@@ -29,10 +29,11 @@ class TridentKernel extends HttpKernel
     {
         $modules = [
             new Trident\Module\FrameworkModule\TridentFrameworkModule(),
+            // new Trident\Module\TemplatingModule\TridentTemplatingModule(),
             new SeerUK\Module\TestModule\SeerUKTestModule()
         ];
 
-        if (in_array($environment, array('dev'))) {
+        if ($this->debug) {
             // Register development modules here:
         }
 
