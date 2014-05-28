@@ -1,6 +1,6 @@
 <?php
 
-use Phalcon\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @var ClassLoader $loader
@@ -10,7 +10,10 @@ $loader = require_once __DIR__.'/../app/autoload.php';
 require_once __DIR__.'/../app/TridentKernel.php';
 
 $kernel = new TridentKernel(true);
-$request = new Request();
+$request = Request::createFromGlobals();
+
+var_dump($request);
+exit;
 
 $response = $kernel->handle($request);
 $response->send();
