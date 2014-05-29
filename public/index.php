@@ -9,7 +9,7 @@ $loader = require_once __DIR__.'/../app/autoload.php';
 
 require_once __DIR__.'/../app/TridentKernel.php';
 
-$kernel = new TridentKernel(true);
+$kernel = new TridentKernel(false);
 $request = Request::createFromGlobals();
 
 $response = $kernel->handle($request);
