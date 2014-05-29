@@ -1,5 +1,7 @@
 <?php
 
+$start = microtime(true);
+
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -14,3 +16,7 @@ $request = Request::createFromGlobals();
 
 $response = $kernel->handle($request);
 $response->send();
+
+$end = microtime(true);
+
+echo '<br /><br />Rendered in ' . (($end - $start) * 1000) . 'ms';
