@@ -11,7 +11,7 @@ $loader = require_once __DIR__.'/../app/autoload.php';
 
 require_once __DIR__.'/../app/TridentKernel.php';
 
-$kernel = new TridentKernel(false);
+$kernel = new TridentKernel('dev', TridentKernel::DEBUG_ENABLED);
 $request = Request::createFromGlobals();
 
 $response = $kernel->handle($request);

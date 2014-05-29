@@ -19,6 +19,9 @@ use Trident\Component\HttpKernel\AbstractKernel;
  */
 class TridentKernel extends AbstractKernel
 {
+    const DEBUG_DISABLED = false;
+    const DEBUG_ENABLED = true;
+
     /**
      * {@inheritDoc}
      */
@@ -30,8 +33,9 @@ class TridentKernel extends AbstractKernel
             new SeerUK\Module\TestModule\SeerUKTestModule()
         ];
 
-        if ($this->debug) {
+        if (in_array($environment, array('dev'))) {
             // Register development modules here:
+            $modules[] = new Trident\Module\DebugModule\TridentDebugModule();
         }
 
         return $modules;
