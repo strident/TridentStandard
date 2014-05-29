@@ -30,6 +30,7 @@ class TridentKernel extends AbstractKernel
         $modules = [
             new Trident\Module\FrameworkModule\TridentFrameworkModule(),
             new Trident\Module\TemplatingModule\TridentTemplatingModule(),
+            new Trident\Module\DoctrineModule\TridentDoctrineModule(),
             new SeerUK\Module\TestModule\SeerUKTestModule()
         ];
 

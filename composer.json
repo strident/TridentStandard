@@ -8,11 +8,6 @@
     },
     "require": {
         "php": ">=5.5.3",
-        "doctrine/common": "~2.2",
-        "illuminate/container": "4.2.*@dev",
-        "illuminate/database": "4.2.*@dev",
-        "illuminate/events": "4.2.*@dev",
-        "illuminate/support": "4.2.*@dev",
         "strident/phimple": "2.0.*",
         "strident/trident": "dev-master"
     },
