@@ -23,6 +23,11 @@ class TestController extends Controller
 {
     public function testAction()
     {
+        $em = $this->get('doctrine.orm.entity_manager');
+        // var_dump($em);
+
+        $em->find('SeerUK\Module\TestModule\Data\Entity\User', 1);
+
         var_dump($this->get('doctrine.orm.entity_manager'));
 
         return $this->render('SeerUKTestModule:Test:index.html.twig', [
