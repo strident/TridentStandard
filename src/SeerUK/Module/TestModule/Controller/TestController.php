@@ -13,4 +13,11 @@ class TestController extends Controller
             'name' => 'Elliot'
         ]));
     }
+
+    public function variableAction($name)
+    {
+        return new Response($this->get('templating')->render('SeerUKTestModule:Test:index.html.twig', [
+            'name' => $name
+        ]));
+    }
 }
