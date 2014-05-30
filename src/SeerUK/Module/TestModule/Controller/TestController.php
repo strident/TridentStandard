@@ -14,6 +14,8 @@ namespace SeerUK\Module\TestModule\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Trident\Module\FrameworkModule\Controller\Controller;
 
+use SeerUK\Module\TestModule\Data\Entity\User;
+
 /**
  * Test Controller
  *
@@ -23,18 +25,21 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        echo "<pre>";
-        var_dump(get_included_files());
-        echo "</pre>";
+        $em = $this->get('doctrine.orm.entity_manager');
 
         $start = microtime(true);
+        $users = $em->getRepository('SeerUK\Module\TestModule\Data\Entity\User')->findAll();
+        $last = end($users);
 
-        $em = $this->get('doctrine.orm.entity_manager');
-        $user = $em->find('SeerUK\Module\TestModule\Data\Entity\User', 1);
-
-        var_dump($user);
-
+        $user = new User();
+        $user->setUsername('Test' . ($last->getId() + 1));
+        $user->setPassword('TestPassword');
+        $em->persist($user);
+        $em->flush();
         $end = microtime(true);
+
+        // var_dump($users);
+        var_dump($user);
 
         var_dump(($end - $start) * 1000);
 
