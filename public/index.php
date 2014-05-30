@@ -3,6 +3,7 @@
 $start = microtime(true);
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Debug\Debug;
 
 /**
  * @var ClassLoader $loader
@@ -10,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 $loader = require_once __DIR__.'/../app/autoload.php';
 
 require_once __DIR__.'/../app/TridentKernel.php';
+
+Debug::enable();
 
 $kernel = new TridentKernel('dev', TridentKernel::DEBUG_ENABLED);
 $request = Request::createFromGlobals();

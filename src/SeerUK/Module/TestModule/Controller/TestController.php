@@ -23,12 +23,16 @@ class TestController extends Controller
 {
     public function testAction()
     {
+        $start = microtime(true);
+
         $em = $this->get('doctrine.orm.entity_manager');
-        // var_dump($em);
+        $user = $em->find('SeerUK\Module\TestModule\Data\Entity\User', 1);
 
-        $em->find('SeerUK\Module\TestModule\Data\Entity\User', 1);
+        var_dump($user);
 
-        var_dump($this->get('doctrine.orm.entity_manager'));
+        $end = microtime(true);
+
+        var_dump(($end - $start) * 1000);
 
         return $this->render('SeerUKTestModule:Test:index.html.twig', [
             'name' => 'Elliot'
