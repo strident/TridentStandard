@@ -23,6 +23,10 @@ class TestController extends Controller
 {
     public function testAction()
     {
+        echo "<pre>";
+        var_dump(get_included_files());
+        echo "</pre>";
+
         $start = microtime(true);
 
         $em = $this->get('doctrine.orm.entity_manager');
