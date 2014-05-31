@@ -10,9 +10,6 @@ return [
             'database' => 'information_schema'
         ]
     ],
-    'templating' => [
-        'engine' => 'twig'
-    ],
     'twig' => [
         'cache_dir' => __DIR__.'/../cache/twig'
     ]
