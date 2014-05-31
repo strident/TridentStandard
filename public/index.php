@@ -14,7 +14,7 @@ require_once __DIR__.'/../app/TridentKernel.php';
 
 Debug::enable();
 
-$kernel = new TridentKernel('dev', TridentKernel::DEBUG_ENABLED);
+$kernel = new TridentKernel('dev', TridentKernel::DEBUG_DISABLED);
 $request = Request::createFromGlobals();
 
 $response = $kernel->handle($request);

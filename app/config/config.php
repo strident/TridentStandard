@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'caching' => [
+        'default' => 'memcached',
+        'memcached' => [
+            'host' => 'localhost',
+            'port' => 11211
+        ]
+    ],
     'database' => [
         'default' => [
             'host' => 'localhost',

@@ -25,24 +25,30 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        // $start = microtime(true);
+        $caching = $this->get('caching');
+        var_dump($caching);
+        exit;
 
-        // $repo = $this->get('test.repository.user');
-        // $users = $repo->findAll();
+        $start = microtime(true);
 
-        // $last = end($users);
+        $em   = $this->get('doctrine.orm.entity_manager');
+        $repo = $this->get('test.repository.user');
+
+        $users = $repo->findAll();
+        $last  = end($users);
 
         // $user = new User();
         // $user->setUsername('Test' . ($last->getId() + 1));
         // $user->setPassword('TestPassword');
+
         // $em->persist($user);
         // $em->flush();
 
-        // $end = microtime(true);
+        $end = microtime(true);
 
-        // var_dump(count($users));
         // var_dump($user);
-        // var_dump(($end - $start) * 1000);
+        var_dump(count($users));
+        var_dump(($end - $start) * 1000);
 
         return $this->render('SeerUKTestModule:Test:index.html.twig', [
             'name' => 'Elliot'
