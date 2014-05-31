@@ -22,4 +22,4 @@ $response->send();
 
 $end = microtime(true);
 
-echo '<br /><br />Rendered in ' . (($end - $start) * 1000) . 'ms';
+echo '<br /><br />Rendered in ' . (($end - $start) * 1000) . 'ms. With peak memory usage of ' . (memory_get_peak_usage() / 1048576 ) . 'mb.';

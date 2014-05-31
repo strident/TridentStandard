@@ -25,21 +25,22 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        $em = $this->get('doctrine.orm.entity_manager');
-
         $start = microtime(true);
-        $users = $em->getRepository('SeerUK\Module\TestModule\Data\Entity\User')->findAll();
+
+        $repo = $this->get('test.repository.user');
+        $users = $repo->findAll();
+
         $last = end($users);
 
-        $user = new User();
-        $user->setUsername('Test' . ($last->getId() + 1));
-        $user->setPassword('TestPassword');
-        $em->persist($user);
-        $em->flush();
+        // $user = new User();
+        // $user->setUsername('Test' . ($last->getId() + 1));
+        // $user->setPassword('TestPassword');
+        // $em->persist($user);
+        // $em->flush();
         $end = microtime(true);
 
-        // var_dump($users);
-        var_dump($user);
+        var_dump(count($users));
+        // var_dump($user);
 
         var_dump(($end - $start) * 1000);
 
