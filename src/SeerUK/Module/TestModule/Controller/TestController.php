@@ -25,15 +25,15 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        $caching = $this->get('caching');
-        var_dump($caching);
-        exit;
+        // $caching = $this->get('caching');
+        // var_dump($caching);
+        // exit;
 
         $start = microtime(true);
 
-        $em   = $this->get('doctrine.orm.entity_manager');
-        $repo = $this->get('test.repository.user');
+        // $em   = $this->get('doctrine.orm.entity_manager');
 
+        $repo = $this->get('test.repository.user');
         $users = $repo->findAll();
         $last  = end($users);
 
@@ -46,7 +46,7 @@ class TestController extends Controller
 
         $end = microtime(true);
 
-        // var_dump($user);
+        // var_dump($users);
         var_dump(count($users));
         var_dump(($end - $start) * 1000);
 
