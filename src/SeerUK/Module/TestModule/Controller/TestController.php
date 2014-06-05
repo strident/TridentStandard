@@ -28,47 +28,10 @@ class TestController extends Controller
     {
         $start = microtime(true);
 
-        $caching = $this->get('caching');
-        $repo    = $this->get('test.repository.user');
-        $proxy   = new CachingProxy();
-        $proxy->setDriver($caching);
+        $repo = $this->get('test.repository.user');
+        $repo->setCachingProxy($this->get('caching.proxy'));
 
-        var_dump($proxy);
-
-        $users = $proxy->get('users', function() use($repo) {
-            return $repo->findAll();
-        });
-
-        var_dump($users);
-        exit;
-
-        // Create ProxyCache.php
-        //
-        // This class will accept a name, and a closer. The name will be the
-        // cache key, the closure will contain the 'real' data source.
-        //
-        // From this proxy cache, a single method may be run to get the value.
-        // The proxy cache will be set up with the cache factory.
-
-        $real = function($container) {
-            return $container->get('test.repository.user')->findAll();
-        };
-
-        $getUsers = function($container, $key, \Closure $real) {
-            $caching = $container->get('caching');
-
-            if ($caching->has($key)) {
-                return $caching->get($key);
-            }
-
-            $data = $real($container);
-            $caching->set($key, $data);
-
-            return $data;
-        };
-
-        var_dump($getUsers);
-        var_dump(count($getUsers($this->container, 'users', $real)));
+        $users = $repo->findAll();
 
         // $em   = $this->get('doctrine.orm.entity_manager');
 
@@ -82,7 +45,7 @@ class TestController extends Controller
         $end = microtime(true);
 
         // var_dump($users);
-        // var_dump(count($users));
+        var_dump(count($users));
         var_dump(($end - $start) * 1000);
 
         return $this->render('SeerUKTestModule:Test:index.html.twig', [

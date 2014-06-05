@@ -5,7 +5,7 @@ namespace SeerUK\Module\TestModule\Data\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SeerUK\Module\TestModule\Data\Repository\UserRepository")
  * @ORM\Table(name="Test.User")
  */
 class User
