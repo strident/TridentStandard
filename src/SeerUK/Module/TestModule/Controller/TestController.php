@@ -26,6 +26,10 @@ class TestController extends Controller
 {
     public function testAction()
     {
+        if (true) {
+            throw new \Exception('Test');
+        }
+
         $start = microtime(true);
 
         $repo = $this->get('test.repository.user');
