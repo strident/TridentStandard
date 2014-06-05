@@ -2,8 +2,8 @@
 
 $start = microtime(true);
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @var ClassLoader $loader
