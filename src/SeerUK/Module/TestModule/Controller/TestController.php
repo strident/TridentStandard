@@ -16,6 +16,8 @@ use Trident\Module\FrameworkModule\Controller\Controller;
 
 use SeerUK\Module\TestModule\Data\Entity\User;
 use Trident\Component\Caching\CachingProxy;
+use Trident\Component\Debug\Toolbar\Extension\TridentMemoryUsageExtension;
+use Trident\Component\Debug\Toolbar\Extension\TridentRuntimeExtension;
 
 /**
  * Test Controller
@@ -26,9 +28,9 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        if (true) {
-            throw new \Exception('Test');
-        }
+        // if (true) {
+        //     throw new \Exception('Test');
+        // }
 
         $start = microtime(true);
 
