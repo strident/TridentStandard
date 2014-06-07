@@ -32,8 +32,6 @@ class TestController extends Controller
         //     throw new \Exception('Test');
         // }
 
-        $start = microtime(true);
-
         $repo = $this->get('test.repository.user');
         $repo->setCachingProxy($this->get('caching.proxy'));
 
@@ -48,14 +46,11 @@ class TestController extends Controller
         // $em->persist($user);
         // $em->flush();
 
-        $end = microtime(true);
-
         // var_dump($users);
-        var_dump(count($users));
-        var_dump(($end - $start) * 1000);
+        // var_dump(count($users));
 
         return $this->render('SeerUKTestModule:Test:index.html.twig', [
-            'name' => 'Elliot'
+            'name' => 'user'
         ]);
     }
 
