@@ -56,6 +56,10 @@ class TestController extends Controller
 
     public function variableAction($name)
     {
+        if (true) {
+            throw new \Trident\Component\HttpKernel\Exception\HttpException(404, 'Not Found');
+        }
+
         return $this->render('SeerUKTestModule:Test:index.html.twig', [
             'name' => $name
         ]);
