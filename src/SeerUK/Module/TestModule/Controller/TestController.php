@@ -30,7 +30,7 @@ class TestController extends Controller
     public function testAction()
     {
         if (true) {
-            throw new NotFoundHttpException('Shit hit the fan.');
+            throw new NotFoundHttpException('This page does exist, I\'m just telling you it doesn\'t.');
         }
 
         $repo = $this->get('test.repository.user');
