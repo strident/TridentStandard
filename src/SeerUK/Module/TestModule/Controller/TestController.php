@@ -12,6 +12,7 @@
 namespace SeerUK\Module\TestModule\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Trident\Component\HttpKernel\Exception\NotFoundHttpException;
 use Trident\Module\FrameworkModule\Controller\Controller;
 
 use SeerUK\Module\TestModule\Data\Entity\User;
@@ -29,7 +30,7 @@ class TestController extends Controller
     public function testAction()
     {
         if (true) {
-            throw new \Trident\Component\HttpKernel\Exception\HttpException(404, 'Not Found');
+            throw new NotFoundHttpException('Shit hit the fan.');
         }
 
         $repo = $this->get('test.repository.user');
@@ -57,7 +58,7 @@ class TestController extends Controller
     public function variableAction($name)
     {
         if (true) {
-            throw new \Trident\Component\HttpKernel\Exception\HttpException(404, 'Not Found');
+            throw new NotFoundHttpException("No $name was found.");
         }
 
         return $this->render('SeerUKTestModule:Test:index.html.twig', [
