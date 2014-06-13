@@ -28,9 +28,9 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        // if (true) {
-        //     throw new \Exception('Test');
-        // }
+        if (true) {
+            throw new \Trident\Component\HttpKernel\Exception\HttpException(404, 'Not Found');
+        }
 
         $repo = $this->get('test.repository.user');
         $repo->setCachingProxy($this->get('caching.proxy'));
