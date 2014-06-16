@@ -14,6 +14,7 @@ namespace SeerUK\Module\TestModule\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Trident\Component\HttpKernel\Exception\ForbiddenHttpException;
 use Trident\Component\HttpKernel\Exception\NotFoundHttpException;
+use Trident\Component\HttpKernel\Exception\HttpException;
 use Trident\Module\FrameworkModule\Controller\Controller;
 
 use SeerUK\Module\TestModule\Data\Entity\User;
@@ -31,6 +32,11 @@ class TestController extends Controller
     public function testAction()
     {
         $proxy = $this->get('caching.proxy');
+
+        // Lame example exception
+        // if ($proxy->getDriver()->has('homepage')) {
+            throw new ForbiddenHttpException('You do not have access to this page.');
+        // }
 
         return $proxy->proxy('homepage', function() {
             $repo = $this->get('test.repository.user');
