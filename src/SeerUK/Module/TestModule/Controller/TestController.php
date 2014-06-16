@@ -12,6 +12,7 @@
 namespace SeerUK\Module\TestModule\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Trident\Component\HttpKernel\Exception\ForbiddenHttpException;
 use Trident\Component\HttpKernel\Exception\NotFoundHttpException;
 use Trident\Module\FrameworkModule\Controller\Controller;
 
@@ -29,30 +30,18 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        if (true) {
-            throw new NotFoundHttpException('This page does exist, I\'m just telling you it doesn\'t.');
-        }
+        $proxy = $this->get('caching.proxy');
 
-        $repo = $this->get('test.repository.user');
-        $repo->setCachingProxy($this->get('caching.proxy'));
+        return $proxy->proxy('homepage', function() {
+            $repo = $this->get('test.repository.user');
+            $repo->setCachingProxy($this->get('caching.proxy'));
 
-        $users = $repo->findAll();
+            $users = $repo->findAll();
 
-        // $em   = $this->get('doctrine.orm.entity_manager');
-
-        // $user = new User();
-        // $user->setUsername('Test' . ($last->getId() + 1));
-        // $user->setPassword('TestPassword');
-
-        // $em->persist($user);
-        // $em->flush();
-
-        // var_dump($users);
-        // var_dump(count($users));
-
-        return $this->render('SeerUKTestModule:Test:index.html.twig', [
-            'name' => 'user'
-        ]);
+            return $this->render('SeerUKTestModule:Test:index.html.twig', [
+                'name' => 'user'
+            ]);
+        });
     }
 
     public function variableAction($name)
