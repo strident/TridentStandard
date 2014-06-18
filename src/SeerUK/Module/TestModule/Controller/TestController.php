@@ -14,13 +14,7 @@ namespace SeerUK\Module\TestModule\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Trident\Component\HttpKernel\Exception\ForbiddenHttpException;
 use Trident\Component\HttpKernel\Exception\NotFoundHttpException;
-use Trident\Component\HttpKernel\Exception\HttpException;
 use Trident\Module\FrameworkModule\Controller\Controller;
-
-use SeerUK\Module\TestModule\Data\Entity\User;
-use Trident\Component\Caching\CachingProxy;
-use Trident\Component\Debug\Toolbar\Extension\TridentMemoryUsageExtension;
-use Trident\Component\Debug\Toolbar\Extension\TridentRuntimeExtension;
 
 /**
  * Test Controller
@@ -35,19 +29,22 @@ class TestController extends Controller
 
         // Lame example exception
         // if ($proxy->getDriver()->has('homepage')) {
-            throw new ForbiddenHttpException('You do not have access to this page.');
+            // throw new ForbiddenHttpException('You do not have access to this page.');
         // }
 
-        return $proxy->proxy('homepage', function() {
+        $proxied = $proxy->proxy('homepage', function() {
             $repo = $this->get('test.repository.user');
             $repo->setCachingProxy($this->get('caching.proxy'));
 
             $users = $repo->findAll();
+            $users = $repo->findAll();
 
             return $this->render('SeerUKTestModule:Test:index.html.twig', [
-                'name' => 'user'
+                'name' => count($users)
             ]);
         });
+
+        return $proxied;
     }
 
     public function variableAction($name)
