@@ -29,7 +29,7 @@ class TestController extends Controller
 
         // Lame example exception
         // if ($proxy->getDriver()->has('homepage')) {
-            // throw new ForbiddenHttpException('You do not have access to this page.');
+            throw new ForbiddenHttpException('You do not have access to this page.');
         // }
 
         $proxied = $proxy->proxy('homepage', function() {
