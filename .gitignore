@@ -1,3 +1,4 @@
 app/cache/*
+public/modules/
 vendor/
 composer.lock
