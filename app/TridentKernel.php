@@ -49,4 +49,14 @@ class TridentKernel extends AbstractKernel
     {
         return require_once __DIR__.'/config/config.php';
     }
+
+    /**
+     * Get public asset directory.
+     *
+     * @return string
+     */
+    public function getAssetDir()
+    {
+        return $this->getRootDir().'/../public/assets';
+    }
 }
