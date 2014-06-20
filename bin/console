@@ -6,8 +6,13 @@ set_time_limit(0);
 $loader = require_once __DIR__.'/../app/autoload.php';
 require_once __DIR__.'/../app/TridentKernel.php';
 
+use Symfony\Component\Console\Input\ArgvInput;
 use Trident\Module\FrameworkModule\Console\Application;
 
-$kernel = new TridentKernel('dev', true);
+$input = new ArgvInput();
+$env   = $input->getParameterOption(array('--env', '-e')) ?: 'dev';
+$debug = $input->hasParameterOption(array('--no-debug', '')) ?: true;
+
+$kernel = new TridentKernel($env, $debug);
 $application = new Application($kernel);
-$application->run();
+$application->run($input);

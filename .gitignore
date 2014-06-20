@@ -1,4 +1,6 @@
 app/cache/*
-public/modules/
+!public/index.php
+!public/.htaccess
+public/*
 vendor/
 composer.lock
