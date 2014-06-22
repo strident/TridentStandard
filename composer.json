@@ -8,9 +8,7 @@
     },
     "require": {
         "php": ">=5.5.3",
-        "strident/phimple": "2.0.*",
-        "strident/trident": "dev-master",
-        "symfony/debug": "2.4.4"
+        "strident/trident": "dev-master"
     },
     "minimum-stability": "dev"
 }
