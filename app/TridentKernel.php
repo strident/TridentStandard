@@ -48,7 +48,7 @@ class TridentKernel extends AbstractKernel
      */
     public function registerConfiguration($environment)
     {
-        return require_once __DIR__.'/config/config.php';
+        return require __DIR__.'/config/config.php';
     }
 
     /**

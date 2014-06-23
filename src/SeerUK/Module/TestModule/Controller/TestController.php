@@ -11,16 +11,11 @@
 
 namespace SeerUK\Module\TestModule\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
 use Trident\Component\HttpKernel\Exception\ForbiddenHttpException;
 use Trident\Component\HttpKernel\Exception\NotFoundHttpException;
 use Trident\Module\FrameworkModule\Controller\Controller;
 
-use Aegis\Aegis;
-use Aegis\Result;
-use Aegis\Authentication\Provider\DelegatingAuthenticationProvider;
-use Aegis\Authentication\Provider\FakeUserProvider;
-use Aegis\Storage\NullStorage;
+use SeerUK\Module\TestModule\Security\Authentication\Token\TestUserToken;
 
 /**
  * Test Controller
@@ -31,15 +26,16 @@ class TestController extends Controller
 {
     public function testAction()
     {
-        $proxy    = $this->get('caching.proxy');
         $security = $this->get('security');
 
-        $provider = new FakeUserProvider($this->get('request'));
-        $token = $provider->present();
+        $token = new TestUserToken([
+            'username' => 'Seer',
+            'password' => 'Test'
+        ]);
 
         $result = $security->authenticate($token);
 
-        // var_dump($security->getToken()->getUser()->getUsername());
+        // var_dump($security);
 
         // switch ($result->getCode()) {
         //     case Result::SUCCESS:
@@ -54,32 +50,19 @@ class TestController extends Controller
         //         break;
         // }
 
-        // var_dump($result);
-        // var_dump($result->getToken());
-
-        // var_dump($aegis->getToken());
-        // var_dump($aegis->getToken()->getCredentials());
-        // var_dump($aegis->getToken()->getUser()->getUsername());
-        // var_dump($aegis);
-        // exit;
-
         // Lame example exception
         // if ($proxy->getDriver()->has('homepage')) {
             // throw new ForbiddenHttpException('You do not have access to this page.');
         // }
 
-        $proxied = $proxy->proxy('homepage', function() {
-            $repo = $this->get('test.repository.user');
-            $repo->setCachingProxy($this->get('caching.proxy'));
+        $repo = $this->get('test.repository.user');
+        $repo->setCachingProxy($this->get('caching.proxy'));
 
-            $users = $repo->findAll();
+        $users = $repo->findAll();
 
-            return $this->render('SeerUKTestModule:Test:index.html.twig', [
-                'name' => count($users)
-            ]);
-        });
-
-        return $proxied;
+        return $this->render('SeerUKTestModule:Test:index.html.twig', [
+            'name' => count($users)
+        ]);
     }
 
     public function variableAction($name)
