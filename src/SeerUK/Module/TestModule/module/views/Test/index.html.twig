@@ -4,11 +4,15 @@
     <title>Trident Test</title>
 </head>
 <body>
-    <p>Hello {{ name }}!</p>
+    {% if app.user %}
+        <p>Welcome back, {{ app.user.username }}.</p>
+    {% else %}
+        <p>Hello guest.</p>
+    {% endif %}
     <p>Welcome to Trident.</p>
 
-    <p>User is {{ app.user.username }}</p>
+    <p>There are currently <em>{{ name }}</em> rows in the user table.</p>
 
-    {% include 'SeerUKTestModule:Test:module-test.html.twig' %}
+    {# {% include 'SeerUKTestModule:Test:module-test.html.twig' %} #}
 </body>
 </html>

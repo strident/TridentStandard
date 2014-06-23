@@ -39,20 +39,20 @@ class TestController extends Controller
 
         $result = $security->authenticate($token);
 
-        var_dump($security->getToken()->getUser()->getUsername());
+        // var_dump($security->getToken()->getUser()->getUsername());
 
-        switch ($result->getCode()) {
-            case Result::SUCCESS:
-                echo 'Successful authentication.';
-                break;
-            case Result::NO_TOKEN:
-                echo 'No token was found.';
-                break;
-            case Result::UNKNOWN:
-            default:
-                echo 'Unknown authentication issue.';
-                break;
-        }
+        // switch ($result->getCode()) {
+        //     case Result::SUCCESS:
+        //         echo 'Successful authentication.';
+        //         break;
+        //     case Result::NO_TOKEN:
+        //         echo 'No token was found.';
+        //         break;
+        //     case Result::UNKNOWN:
+        //     default:
+        //         echo 'Unknown authentication issue.';
+        //         break;
+        // }
 
         // var_dump($result);
         // var_dump($result->getToken());
