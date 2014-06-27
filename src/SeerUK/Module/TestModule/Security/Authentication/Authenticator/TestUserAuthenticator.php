@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SeerUK\Module\TestModule\Security\Authentication\Provider;
+namespace SeerUK\Module\TestModule\Security\Authentication\Authenticator;
 
-use Aegis\Authentication\Provider\AuthenticationProviderInterface;
+use Aegis\Authentication\Authenticator\AuthenticatorInterface;
 use Aegis\Authentication\Token\AuthenticationTokenInterface;
+use Aegis\Exception\AuthenticationException;
 use Doctrine\ORM\EntityManager;
 use SeerUK\Module\TestModule\Data\Entity\User;
 use SeerUK\Module\TestModule\Data\Repository\UserRepository;
@@ -20,13 +21,13 @@ use SeerUK\Module\TestModule\Security\Authentication\Token\TestUserToken;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Fake User Provider.
+ * Test User Authenticator.
  *
  * For debugging purposes only.
  *
  * @author Elliot Wright <elliot@elliotwright.co>
  */
-class TestUserProvider implements AuthenticationProviderInterface
+class TestUserAuthenticator implements AuthenticatorInterface
 {
     private $repository;
 
@@ -38,13 +39,6 @@ class TestUserProvider implements AuthenticationProviderInterface
     public function __construct(EntityManager $em)
     {
         $this->repository = $em->getRepository(User::class);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function present()
-    {
     }
 
     /**

@@ -2,9 +2,9 @@
 
 return function ($container) {
     // Parameters
-    $container['test.entity.user.class']                       = 'SeerUK\\Module\\TestModule\\Data\\Entity\\User';
-    $container['test.intercept_response_listener.class']       = 'SeerUK\\Module\\TestModule\\Event\\InterceptResponseListener';
-    $container['test.security.aegis.provider.test_user.class'] = 'SeerUK\\Module\\TestModule\\Security\\Authentication\\Provider\\TestUserProvider';
+    $container['test.entity.user.class']                            = 'SeerUK\\Module\\TestModule\\Data\\Entity\\User';
+    $container['test.intercept_response_listener.class']            = 'SeerUK\\Module\\TestModule\\Event\\InterceptResponseListener';
+    $container['test.security.aegis.authenticator.test_user.class'] = 'SeerUK\\Module\\TestModule\\Security\\Authentication\\Authenticator\\TestUserAuthenticator';
 
 
     // Services
@@ -17,8 +17,8 @@ return function ($container) {
         return new $c['test.intercept_response_listener.class']();
     });
 
-    $container->set('test.security.aegis.provider.test_user', function($c) {
-        return new $c['test.security.aegis.provider.test_user.class']($c->get('doctrine.orm.entity_manager'));
+    $container->set('test.security.aegis.authenticator.test_user', function($c) {
+        return new $c['test.security.aegis.authenticator.test_user.class']($c->get('doctrine.orm.entity_manager'));
     });
 
 
@@ -32,9 +32,9 @@ return function ($container) {
         return $dispatcher;
     });
 
-    $container->extend('security.aegis.provider.delegating', function($provider, $c) {
-        $provider->addProvider($c->get('test.security.aegis.provider.test_user'));
+    $container->extend('security.aegis.authenticator.delegating', function($authenticator, $c) {
+        $authenticator->addAuthenticator($c->get('test.security.aegis.authenticator.test_user'));
 
-        return $provider;
+        return $authenticator;
     });
 };

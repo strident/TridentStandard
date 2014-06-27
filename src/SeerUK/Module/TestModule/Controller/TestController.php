@@ -35,6 +35,9 @@ class TestController extends Controller
 
         $result = $security->authenticate($token);
 
+        var_dump($result);
+
+
         // var_dump($security);
 
         // switch ($result->getCode()) {
