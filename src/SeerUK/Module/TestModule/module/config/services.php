@@ -20,21 +20,4 @@ return function ($container) {
     $container->set('test.security.aegis.authenticator.test_user', function($c) {
         return new $c['test.security.aegis.authenticator.test_user.class']($c->get('doctrine.orm.entity_manager'));
     });
-
-
-    // Extensions
-    $container->extend('event_dispatcher', function($dispatcher, $c) {
-        // $dispatcher->addListener('kernel.request', [
-        //     $c->get('test.intercept_response_listener'),
-        //     'onRequest'
-        // ]);
-
-        return $dispatcher;
-    });
-
-    $container->extend('security.aegis.authenticator.delegating', function($authenticator, $c) {
-        $authenticator->addAuthenticator($c->get('test.security.aegis.authenticator.test_user'));
-
-        return $authenticator;
-    });
 };

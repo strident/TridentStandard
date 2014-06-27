@@ -25,10 +25,9 @@ class SeerUKTestModule extends AbstractModule
      */
     public function registerRoutes(RouteCollection $collection)
     {
-        $routes     = require __DIR__.'/module/config/routes.php';
-        $registered = call_user_func($routes, $collection);
+        $routes = require __DIR__.'/module/config/routes.php';
 
-        // @todo: Throw some exception if registered is false
+        call_user_func($routes, $collection);
     }
 
     /**
@@ -38,9 +37,18 @@ class SeerUKTestModule extends AbstractModule
     {
         // throw new \Exception('Woops');
 
-        $services   = require __DIR__.'/module/config/services.php';
-        $registered = call_user_func($services, $container);
+        $services = require __DIR__.'/module/config/services.php';
 
-        // @todo: Throw some exception if registered is false
+        call_user_func($services, $container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function registerServiceExtensions(Container $container)
+    {
+        $extensions = require __DIR__.'/module/config/service_extensions.php';
+
+        call_user_func($extensions, $container);
     }
 }
