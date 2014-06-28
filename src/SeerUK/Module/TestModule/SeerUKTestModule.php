@@ -35,8 +35,6 @@ class SeerUKTestModule extends AbstractModule
      */
     public function registerServices(Container $container)
     {
-        // throw new \Exception('Woops');
-
         $services = require __DIR__.'/module/config/services.php';
 
         call_user_func($services, $container);
