@@ -13,6 +13,7 @@ namespace SeerUK\Module\TestModule\Security\Authentication\Authenticator;
 
 use Aegis\Authentication\Authenticator\AuthenticatorInterface;
 use Aegis\Authentication\Token\AuthenticationTokenInterface;
+use Aegis\Authentication\Result;
 use Aegis\Exception\AuthenticationException;
 use Doctrine\ORM\EntityManager;
 use SeerUK\Module\TestModule\Data\Entity\User;
@@ -78,8 +79,8 @@ class TestUserAuthenticator implements AuthenticatorInterface
     /**
      * {@inheritDoc}
      */
-    public function supports()
+    public function supports(AuthenticationTokenInterface $token)
     {
-        return TestUserToken::class;
+        return ($token instanceof TestUserToken);
     }
 }

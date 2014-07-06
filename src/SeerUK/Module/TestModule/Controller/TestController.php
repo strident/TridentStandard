@@ -36,22 +36,7 @@ class TestController extends Controller
         $result = $security->authenticate($token);
 
         var_dump($result);
-
-
         // var_dump($security);
-
-        // switch ($result->getCode()) {
-        //     case Result::SUCCESS:
-        //         echo 'Successful authentication.';
-        //         break;
-        //     case Result::NO_TOKEN:
-        //         echo 'No token was found.';
-        //         break;
-        //     case Result::UNKNOWN:
-        //     default:
-        //         echo 'Unknown authentication issue.';
-        //         break;
-        // }
 
         // Lame example exception
         // if ($proxy->getDriver()->has('homepage')) {
