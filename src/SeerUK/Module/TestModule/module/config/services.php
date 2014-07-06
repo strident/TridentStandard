@@ -2,10 +2,10 @@
 
 return function ($container) {
     // Parameters
-    $container['test.entity.user.class']                            = 'SeerUK\\Module\\TestModule\\Data\\Entity\\User';
-    $container['test.intercept_response_listener.class']            = 'SeerUK\\Module\\TestModule\\Event\\InterceptResponseListener';
-    $container['test.security.aegis.authenticator.test_user.class'] = 'SeerUK\\Module\\TestModule\\Security\\Authentication\\Authenticator\\TestUserAuthenticator';
-
+    $container['test.entity.user.class']                                  = 'SeerUK\\Module\\TestModule\\Data\\Entity\\User';
+    $container['test.intercept_response_listener.class']                  = 'SeerUK\\Module\\TestModule\\Event\\InterceptResponseListener';
+    $container['test.security.aegis.authenticator.test_user.class']       = 'SeerUK\\Module\\TestModule\\Security\\Authentication\\Authenticator\\TestUserAuthenticator';
+    $container['test.security.aegis.authorization.voter.user_repo.class'] = 'SeerUK\\Module\\TestModule\\Security\\Authorization\\Voter\\UserRepoVoter';
 
     // Services
     $container->set('test.repository.user', function($c) {
@@ -19,5 +19,9 @@ return function ($container) {
 
     $container->set('test.security.aegis.authenticator.test_user', function($c) {
         return new $c['test.security.aegis.authenticator.test_user.class']($c->get('doctrine.orm.entity_manager'));
+    });
+
+    $container->set('test.security.aegis.authorization.voter.user_repo', function($c) {
+        return new $c['test.security.aegis.authorization.voter.user_repo.class']();
     });
 };

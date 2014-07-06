@@ -11,7 +11,7 @@
 
 namespace SeerUK\Module\TestModule\Security\Authentication\Token;
 
-use Aegis\Authentication\Token\AuthenticationTokenInterface;
+use Aegis\Token\TokenInterface;
 use Aegis\User\UserInterface;
 use SeerUK\Module\TestModule\Data\Entity\User;
 
@@ -20,7 +20,7 @@ use SeerUK\Module\TestModule\Data\Entity\User;
  *
  * @author Elliot Wright <elliot@elliotwright.co>
  */
-class TestUserToken implements AuthenticationTokenInterface
+class TestUserToken implements TokenInterface
 {
     private $authenticated = false;
     private $credentials;

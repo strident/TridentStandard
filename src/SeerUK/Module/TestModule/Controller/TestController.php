@@ -35,16 +35,12 @@ class TestController extends Controller
 
         $result = $security->authenticate($token);
 
-        var_dump($result);
-        // var_dump($security);
-
-        // Lame example exception
-        // if ($proxy->getDriver()->has('homepage')) {
-            // throw new ForbiddenHttpException('You do not have access to this page.');
-        // }
-
         $repo = $this->get('test.repository.user');
         $repo->setCachingProxy($this->get('caching.proxy'));
+
+        if ( ! $security->isGranted('READ', $repo)) {
+            throw new ForbiddenHttpException('You\'re not allowed to read that repository.');
+        }
 
         $users = $repo->findAll();
 

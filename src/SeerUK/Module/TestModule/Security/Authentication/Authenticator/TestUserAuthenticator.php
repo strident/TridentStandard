@@ -12,9 +12,9 @@
 namespace SeerUK\Module\TestModule\Security\Authentication\Authenticator;
 
 use Aegis\Authentication\Authenticator\AuthenticatorInterface;
-use Aegis\Authentication\Token\AuthenticationTokenInterface;
 use Aegis\Authentication\Result;
 use Aegis\Exception\AuthenticationException;
+use Aegis\Token\TokenInterface;
 use Doctrine\ORM\EntityManager;
 use SeerUK\Module\TestModule\Data\Entity\User;
 use SeerUK\Module\TestModule\Data\Repository\UserRepository;
@@ -45,7 +45,7 @@ class TestUserAuthenticator implements AuthenticatorInterface
     /**
      * {@inheritDoc}
      */
-    public function authenticate(AuthenticationTokenInterface $token)
+    public function authenticate(TokenInterface $token)
     {
         if ( ! isset($this->repository)) {
             throw new \RuntimeException('No repository found to fetch user from.');
@@ -67,10 +67,7 @@ class TestUserAuthenticator implements AuthenticatorInterface
             throw new AuthenticationException($token, 'Bad credentials');
         }
 
-        // This would be where you'd grab the real user object.
         $token->setUser($user);
-
-        // Do something to validate user credentials from token
         $token->setAuthenticated(count($token->getUser()->getRoles()) > 0);
 
         return $token;
@@ -79,7 +76,7 @@ class TestUserAuthenticator implements AuthenticatorInterface
     /**
      * {@inheritDoc}
      */
-    public function supports(AuthenticationTokenInterface $token)
+    public function supports(TokenInterface $token)
     {
         return ($token instanceof TestUserToken);
     }
