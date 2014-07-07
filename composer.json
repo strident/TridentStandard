@@ -2,7 +2,7 @@
     "name": "strident/trident-standard",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Trident Standard Edition\" distribution",
+    "description": "The \"Trident Standard Edition\" distribution.",
     "autoload": {
         "psr-0": { "": "src/", "TridentStandard": "app/" }
     },
@@ -10,5 +10,11 @@
         "php": ">=5.5.3",
         "strident/trident": "dev-master"
     },
-    "minimum-stability": "dev"
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "trident-app-dir": "app",
+        "trident-public-dir": "public"
+    }
 }
