@@ -16,5 +16,6 @@
     "extra": {
         "trident-app-dir": "app",
         "trident-public-dir": "public"
-    }
+    },
+    "minimum-stability": "dev"
 }
