@@ -14,7 +14,7 @@ return [
             'username' => 'tifa',
             'password' => '',
             'port' => '3306',
-            'database' => 'information_schema'
+            'database' => 'Test'
         ]
     ],
     'twig' => [
