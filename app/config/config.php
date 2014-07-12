@@ -17,6 +17,11 @@ return [
             'database' => 'Test'
         ]
     ],
+    'security' => [
+        'forms' => [
+            'csrf_secret' => 'GI5_lvR)pWp5(RQOBO5k#sOmX6sYxW9F'
+        ]
+    ],
     'twig' => [
         'cache_dir' => __DIR__.'/../cache/twig'
     ]
