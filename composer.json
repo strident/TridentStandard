@@ -8,7 +8,7 @@
     },
     "require": {
         "php": ">=5.5.3",
-        "strident/trident": "1.0.5-alpha8"
+        "strident/trident": "1.0.5-alpha9"
     },
     "config": {
         "bin-dir": "bin"
