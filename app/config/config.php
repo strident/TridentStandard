@@ -1,5 +1,11 @@
 <?php
 
+$dbHost = '';
+$dbPort = '';
+$dbUser = '';
+$dbPass = '';
+$dbName = '';
+
 return [
     'caching' => [
         'default' => 'memcached',
@@ -10,11 +16,38 @@ return [
     ],
     'database' => [
         'default' => [
-            'host' => 'localhost',
-            'username' => 'tifa',
-            'password' => '',
-            'port' => '3306',
-            'database' => 'Test'
+            'host'     => $dbHost,
+            'port'     => $dbPort,
+            'username' => $dbUser,
+            'password' => $dbPass,
+            'database' => $dbName
+        ]
+    ],
+    'migrations' => [
+        'paths' => [
+            'migrations' => __DIR__.'/../migrations'
+        ],
+        'environments' => [
+            'default_migration_table' => 'migrations_tracking',
+            'default_database' => 'dev',
+            'prod' => [
+                'adapter' => 'mysql',
+                'host'    => $dbHost,
+                'name'    => $dbName,
+                'user'    => $dbUser,
+                'pass'    => $dbPass,
+                'port'    => $dbPort,
+                'charset' => 'utf8'
+            ],
+            'dev' => [
+                'adapter' => 'mysql',
+                'host'    => $dbHost,
+                'name'    => $dbName,
+                'user'    => $dbUser,
+                'pass'    => $dbPass,
+                'port'    => $dbPort,
+                'charset' => 'utf8'
+            ]
         ]
     ],
     'security' => [
